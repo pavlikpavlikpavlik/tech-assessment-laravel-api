@@ -6,7 +6,7 @@ namespace App\Services;
 
 use App\Models\VerificationResult;
 use Illuminate\Support\Facades\Log;
-
+use \Exception;
 /**
  * SaveVerificationResultService class
  */
@@ -25,7 +25,7 @@ class SaveVerificationResultService
 
         try {
             VerificationResult::create($data);
-        } catch (\Throwable $throwable) {
+        } catch (Exception $throwable) {
             Log::error('Verification result error: ' . $throwable->getMessage(), ['data' => $data, 'exception' => $throwable]);
         }
     }

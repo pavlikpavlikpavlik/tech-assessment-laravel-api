@@ -40,7 +40,7 @@ class VerifyService
     /**
      * Check recipient valid
      */
-    private function isValidRecipient(array $data): bool
+    public function isValidRecipient(array $data): bool
     {
         return $data['data']['recipient']['name'] &&
             $data['data']['recipient']['email'];
@@ -49,7 +49,7 @@ class VerifyService
     /**
      * Check the validity of the issuer.
      */
-    private function isValidIssuer(array $data): bool
+    public function isValidIssuer(array $data): bool
     {
         if (isset($data['data']['issuer'] )) {
             $issuer = $data['data']['issuer'];
@@ -81,7 +81,7 @@ class VerifyService
     /**
      * Proves the validity of the signature.
      */
-    private function isValidSignature(array $data): bool
+    public function isValidSignature(array $data): bool
     {
         $targetHash = '';
         $computedHash = '';
@@ -107,7 +107,7 @@ class VerifyService
     /**
      * Get DNS TXT records for the specified domain.
      */
-    private function getDnsTxtRecords(string $domain): array
+    public function getDnsTxtRecords(string $domain): array
     {
         $response = Http::get(sprintf(self::DNS_GOOGLE_URL, $domain));
         $body = $response->json();
@@ -118,7 +118,7 @@ class VerifyService
     /**
      * Compute targetHash from JSON data.
      */
-    private function computeTargetHash(array $data): string
+    public function computeTargetHash(array $data): string
     {
         $hashes = [];
         $this->extractDataPaths($data, '', $hashes);
@@ -137,7 +137,7 @@ class VerifyService
     /**
      * Recursively extract data paths in key.value format.
      */
-    private function extractDataPaths(array $data, string $prefix, array &$hashes): void
+    public function extractDataPaths(array $data, string $prefix, array &$hashes): void
     {
         foreach ($data as $key => $value) {
             $path = $prefix ? "{$prefix}.{$key}" : $key;
@@ -153,7 +153,7 @@ class VerifyService
     /**
      * Get the value from the path from the data.
      */
-    private function getValueByPath(array $data, string $path): mixed
+    public function getValueByPath(array $data, string $path): mixed
     {
         $keys = explode('.', $path);
         $value = $data;
