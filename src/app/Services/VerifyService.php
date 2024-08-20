@@ -42,8 +42,8 @@ class VerifyService
      */
     private function isValidRecipient(array $data): bool
     {
-        return isset($data['data']['recipient']['name']) &&
-            isset($data['data']['recipient']['email']);
+        return $data['data']['recipient']['name'] &&
+            $data['data']['recipient']['email'];
     }
 
     /**
@@ -60,8 +60,14 @@ class VerifyService
 
         if (!$issuer ||
             !isset($issuer['name']) ||
+            !isset($issuer['identityProof']) ||
+            !isset($issuer['identityProof']['type']) ||
             !isset($issuer['identityProof']['key']) ||
-            !isset($issuer['identityProof']['location'])
+            !isset($issuer['identityProof']['location']) ||
+            !$issuer['name'] ||
+            !$issuer['identityProof']['type'] ||
+            !$issuer['identityProof']['key'] ||
+            !$issuer['identityProof']['location']
         ) {
             Log::notice('One or more elements were not found, file probably has invalid structure.');
             return false;
