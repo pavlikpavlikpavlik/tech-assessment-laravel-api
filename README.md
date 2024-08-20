@@ -8,15 +8,15 @@
 8. Go to http://localhost:8080/token and copy the Bearer token.
 9. Start Insomnia.
 10. Open the Auth tab
-    10.1 In the Auth tab, select the “API Key” method.
-    10.2 In the “KEY” field, enter “Authorization”.
-    10.3 In the “VALUE” field, enter the previously copied Bearer token (Note that the entered token must necessarily contain the prefix “Bearer” space “token” example -
+    - 10.1 In the Auth tab, select the “API Key” method.
+    - 10.2 In the “KEY” field, enter “Authorization”.
+    - 10.3 In the “VALUE” field, enter the previously copied Bearer token (Note that the entered token must necessarily contain the prefix “Bearer” space “token” example -
     Bearer 8G8V8V53ODMbRzZzDe1As3nVLFJzrsixuGx5JvKmWMcfc97911 )
 11. Open the “Body” tab
-    11.1 Add a new line using the (+ Add) button.
-    11.2 Enter “file” as the key.
-    11.3 Select the type “File” in the selector as the value.
-    11.4 Select the file to be uploaded which you want to verify.
+    - 11.1 Add a new line using the (+ Add) button.
+    - 11.2 Enter “file” as the key.
+    - 11.3 Select the type “File” in the selector as the value.
+    - 11.4 Select the file to be uploaded which you want to verify.
 12. In the address bar, enter the URL (http://localhost:8080/api/verify) and the POST request type.
 13. Click Send. The file will be parsed and a response will be returned to you.
 
