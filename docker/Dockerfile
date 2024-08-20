@@ -26,9 +26,5 @@ COPY ./src /var/www/html
 COPY ./docker/xdebug.ini /usr/local/etc/php/conf.d/
 COPY ./docker/php.ini /usr/local/etc/php/conf.d/
 
-RUN composer install --prefer-dist --no-dev --no-autoloader --no-scripts --no-progress --no-interaction
-
-RUN composer dump-autoload --optimize
-
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
     chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
